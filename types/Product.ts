@@ -1,4 +1,4 @@
-enum Unit {
+export enum Unit {
   Unit,
   Kilogram,
   Gram,
