@@ -1,10 +1,11 @@
 import { nanoid } from 'nanoid'
 import { LocalStorage } from '../node_modules/lowdb/lib/adapters/LocalStorage.js'
 import { LowSync } from '../node_modules/lowdb/lib/LowSync.js'
+import { Comparison } from '../types/Comparison.js'
 import { Product } from '../types/Product.js'
 
 type Data = {
-  products: Product[]
+  comparisons: Comparison[]
 }
 
 const adapter = new LocalStorage<Data>('db')
@@ -12,17 +13,43 @@ const db = new LowSync(adapter)
 
 if (typeof window !== 'undefined') {
   db.read()
-  db.data ||= { products: [] }
+  db.data ||= { comparisons: [] }
+  if (!db.data.comparisons) {
+    db.data.comparisons = []
+  }
   db.write()
 }
 
-export const loadProducts = () => {
-  return db.data?.products || []
+export const loadComparisons = () => {
+  return db.data?.comparisons || []
 }
 
-export const addProduct = ({ name, unit, price }: Product) => {
+export const addComparison = () => {
   const id = nanoid()
-  db.data!.products.push({
+  db.data!.comparisons.push({
+    id,
+    products: [],
+  })
+  db.write()
+}
+
+export const removeComparison = (comparisonId: string) => {
+  db.read()
+  db.data!.comparisons = db.data!.comparisons.filter(
+    (comparison) => comparison.id !== comparisonId
+  )
+  db.write()
+}
+
+export const addProduct = (
+  comparisonId: string,
+  { name, unit, price }: Product
+) => {
+  const id = nanoid()
+  const comparison = db.data!.comparisons.find(
+    (comparison) => comparison.id === comparisonId
+  )
+  comparison?.products.push({
     id,
     name,
     unit,
@@ -31,22 +58,30 @@ export const addProduct = ({ name, unit, price }: Product) => {
   db.write()
 }
 
-export const removeProduct = (id: string) => {
+export const removeProduct = (comparisonId: string, productId: string) => {
   db.read()
-  db.data!.products = db.data!.products.filter((product) => product.id !== id)
+  const comparison = db.data!.comparisons.find(
+    (comparison) => comparison.id === comparisonId
+  )
+  const productIndex = comparison?.products.findIndex(
+    (product) => product.id === productId
+  )
+  comparison?.products.splice(productIndex!, 1)
   db.write()
 }
 
-export const clearAllProducts = () => {
+export const clearAllComparisons = () => {
   db.read()
-  db.data!.products = []
+  db.data!.comparisons = []
   db.write()
 }
 
 // eslint-disable-next-line import/no-anonymous-default-export
 export default {
-  loadProducts,
+  loadComparisons,
+  addComparison,
+  removeComparison,
   addProduct,
   removeProduct,
-  clearAllProducts,
+  clearAllComparisons,
 }

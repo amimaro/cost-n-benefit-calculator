@@ -1,7 +1,7 @@
 import { Dialog, Transition } from '@headlessui/react'
 import { Fragment } from 'react'
 
-type AppDialogPropsType = {
+export type AppDialogPropsType = {
   isOpen: boolean
   close: () => void
   title?: string
