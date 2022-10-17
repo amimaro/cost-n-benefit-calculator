@@ -10,6 +10,7 @@
     "prepare": "husky install"
   },
   "dependencies": {
+    "@headlessui/react": "^1.7.3",
     "lowdb": "^3.0.0",
     "nanoid": "^4.0.0",
     "next": "12.3.1",
