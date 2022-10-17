@@ -1,9 +1,10 @@
 import type { NextPage } from 'next'
 import { useEffect, useState } from 'react'
 import { loadComparisons } from '../services/lowdb'
+import { Comparison } from '../types/Comparison'
 
 const Home: NextPage = () => {
-  const [comparisons, setComparisons] = useState([])
+  const [comparisons, setComparisons] = useState<Comparison[]>([])
 
   useEffect(() => {
     setComparisons(loadComparisons())
