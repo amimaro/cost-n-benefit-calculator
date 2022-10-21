@@ -1,6 +1,8 @@
 import type { NextPage } from 'next'
 import { useEffect, useState } from 'react'
-import { loadComparisons } from '../services/lowdb'
+import AppButton from '../components/AppButton'
+import AppCard from '../components/AppCard'
+import { addComparison, loadComparisons } from '../services/lowdb'
 import { Comparison } from '../types/Comparison'
 
 const Home: NextPage = () => {
@@ -12,10 +14,31 @@ const Home: NextPage = () => {
 
   return (
     <div className="w-full h-full">
-      <div className="text-right text-lg">
-        <button className="bg-slate-700 text-white rounded-xl px-10 py-2">
+      <div className="text-right">
+        <AppButton
+          onClick={() => {
+            addComparison()
+            setComparisons([...loadComparisons()])
+          }}
+        >
           Create comparison
-        </button>
+        </AppButton>
+      </div>
+
+      <div className="flex flex-col gap-4 mt-4">
+        {comparisons.map((comparison) => (
+          <AppCard key={comparison.id}>
+            <div className="text-right">
+              <AppButton
+                onClick={() => {
+                  console.log('add product')
+                }}
+              >
+                Add product
+              </AppButton>
+            </div>
+          </AppCard>
+        ))}
       </div>
     </div>
   )
