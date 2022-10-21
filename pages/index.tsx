@@ -10,7 +10,15 @@ const Home: NextPage = () => {
     setComparisons(loadComparisons())
   }, [])
 
-  return <div className="w-full h-full"></div>
+  return (
+    <div className="w-full h-full">
+      <div className="text-right text-lg">
+        <button className="bg-slate-700 text-white rounded-xl px-10 py-2">
+          Create comparison
+        </button>
+      </div>
+    </div>
+  )
 }
 
 export default Home
