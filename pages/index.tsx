@@ -1,8 +1,14 @@
+import { ok } from 'assert'
 import type { NextPage } from 'next'
 import { useEffect, useState } from 'react'
 import AppButton from '../components/AppButton'
 import AppCard from '../components/AppCard'
-import { addComparison, loadComparisons } from '../services/lowdb'
+import DeleteButton from '../components/DeleteButton'
+import {
+  addComparison,
+  loadComparisons,
+  removeComparison,
+} from '../services/lowdb'
 import { Comparison } from '../types/Comparison'
 
 const Home: NextPage = () => {
@@ -36,6 +42,14 @@ const Home: NextPage = () => {
               >
                 Add product
               </AppButton>
+            </div>
+            <div className="text-right">
+              <DeleteButton
+                onClick={() => {
+                  removeComparison(comparison.id!)
+                  setComparisons([...loadComparisons()])
+                }}
+              />
             </div>
           </AppCard>
         ))}
