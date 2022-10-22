@@ -1,4 +1,3 @@
-import { ok } from 'assert'
 import type { NextPage } from 'next'
 import { useEffect, useState } from 'react'
 import AppButton from '../components/AppButton'
