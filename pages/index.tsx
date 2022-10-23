@@ -10,6 +10,7 @@ import {
   removeComparison,
 } from '../services/lowdb'
 import { Comparison } from '../types/Comparison'
+import { Unit } from '../types/Product'
 
 const Home: NextPage = () => {
   const [comparisons, setComparisons] = useState<Comparison[]>([])
@@ -48,6 +49,17 @@ const Home: NextPage = () => {
               <AppButton onClick={() => setAddProductModalOpen(true)}>
                 Add product
               </AppButton>
+            </div>
+            <div className="flex flex-wrap gap-4">
+              {comparison.products.map((product) => (
+                <AppCard key={product.id}>
+                  <div className="min-w-[10rem]">
+                    <p>Name: {product.name}</p>
+                    <p>Quantity: {product.quantity} {Unit[product.unit]}</p>
+                    <p>Price: ${product.price}</p>                    
+                  </div>
+                </AppCard>
+              ))}
             </div>
             <div className="text-right">
               <DeleteButton
