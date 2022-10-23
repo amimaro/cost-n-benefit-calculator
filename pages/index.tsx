@@ -1,5 +1,6 @@
 import type { NextPage } from 'next'
 import { useEffect, useState } from 'react'
+import AddProductModal from '../components/AddProductModal'
 import AppButton from '../components/AppButton'
 import AppCard from '../components/AppCard'
 import DeleteButton from '../components/DeleteButton'
@@ -12,6 +13,7 @@ import { Comparison } from '../types/Comparison'
 
 const Home: NextPage = () => {
   const [comparisons, setComparisons] = useState<Comparison[]>([])
+  const [addProductModalOpen, setAddProductModalOpen] = useState(false)
 
   useEffect(() => {
     setComparisons(loadComparisons())
@@ -31,14 +33,15 @@ const Home: NextPage = () => {
       </div>
 
       <div className="flex flex-col gap-4 mt-4">
+        <AddProductModal
+          title="Add product"
+          isOpen={addProductModalOpen}
+          close={() => setAddProductModalOpen(false)}
+        />
         {comparisons.map((comparison) => (
           <AppCard key={comparison.id}>
             <div className="text-right">
-              <AppButton
-                onClick={() => {
-                  console.log('add product')
-                }}
-              >
+              <AppButton onClick={() => setAddProductModalOpen(true)}>
                 Add product
               </AppButton>
             </div>
