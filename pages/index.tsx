@@ -33,6 +33,11 @@ const Home: NextPage = () => {
       </div>
 
       <div className="flex flex-col gap-4 mt-4">
+        <AddProductModal
+          title="Add product"
+          isOpen={addProductModalOpen}
+          close={() => setAddProductModalOpen(false)}
+        />
         {comparisons.map((comparison) => (
           <AppCard key={comparison.id}>
             <AddProductModal

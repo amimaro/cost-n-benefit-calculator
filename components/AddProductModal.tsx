@@ -51,3 +51,4 @@ export default function AddProductModal(props: AppDialogPropsType) {
     </AppDialog>
   )
 }
+

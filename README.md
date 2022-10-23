@@ -1,6 +1,6 @@
 # Cost and Benefit Calculator
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-2-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 Giving an unit type and the price you can decide which options has the best cost and benefit between similar products.
@@ -70,6 +70,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
   <tbody>
     <tr>
       <td align="center"><a href="https://github.com/JoaoGennaro"><img src="https://avatars.githubusercontent.com/u/61983891?v=4?s=100" width="100px;" alt="João Lucas Costa  "/><br /><sub><b>João Lucas Costa  </b></sub></a><br /><a href="https://github.com/amimaro/cost-n-benefit-calculator/commits?author=JoaoGennaro" title="Code">💻</a></td>
+      <td align="center"><a href="https://github.com/Karins96"><img src="https://avatars.githubusercontent.com/u/114707279?v=4?s=100" width="100px;" alt="Karins96 "/><br /><sub><b>Karins96 </b></sub></a><br /><a href="https://github.com/amimaro/cost-n-benefit-calculator/commits?author=Karins96" title="Code">💻</a></td>
     </tr>
   </tbody>
 </table>
