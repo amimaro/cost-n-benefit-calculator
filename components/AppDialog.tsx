@@ -47,7 +47,7 @@ export default function AppDialog({
                 >
                   {title}
                 </Dialog.Title>
-                <div className={title && 'mt-2'}>aa{children}</div>
+                <div className={title && 'mt-2'}>{children}</div>
               </Dialog.Panel>
             </Transition.Child>
           </div>
