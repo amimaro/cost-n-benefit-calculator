@@ -4,19 +4,31 @@ import { Fragment } from 'react'
 export type AppDialogPropsType = {
   isOpen: boolean
   close: () => void
+  afterClose?: () => void
   title?: string
   children?: React.ReactNode
+  comparisonId: string
 }
 
 export default function AppDialog({
   isOpen = false,
   close,
+  afterClose,
   title,
   children,
 }: AppDialogPropsType) {
   return (
     <Transition appear show={isOpen} as={Fragment}>
-      <Dialog as="div" className="relative z-10" onClose={close}>
+      <Dialog
+        as="div"
+        className="relative z-10"
+        onClose={() => {
+          close()
+          if (afterClose) {
+            afterClose()
+          }
+        }}
+      >
         <Transition.Child
           as={Fragment}
           enter="ease-out duration-300"
