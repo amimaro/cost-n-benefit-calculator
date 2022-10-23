@@ -43,7 +43,7 @@ export const removeComparison = (comparisonId: string) => {
 
 export const addProduct = (
   comparisonId: string,
-  { name, unit, price }: Product
+  { name, unit, price, quantity }: Product
 ) => {
   const id = nanoid()
   const comparison = db.data!.comparisons.find(
@@ -54,6 +54,7 @@ export const addProduct = (
     name,
     unit,
     price,
+    quantity,
   })
   db.write()
 }

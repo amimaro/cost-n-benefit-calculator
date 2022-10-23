@@ -11,4 +11,5 @@ export type Product = {
   name: string
   unit: Unit
   price: number
+  quantity: number
 }
