@@ -3,5 +3,5 @@ export type AppCardPropsType = {
 }
 
 export default function AppCard({ children }: AppCardPropsType) {
-  return <div className="bg-white rounded-xl px-4 py-2">{children}</div>
+  return <div className="bg-white rounded-xl px-4 py-2 shadow">{children}</div>
 }

@@ -9,7 +9,7 @@ const DEFAULT_FORM = {
   name: '',
   quantity: 0,
   price: 0,
-  unit: Unit.Unit,
+  unit: Unit.Un,
 }
 
 export default function AddProductModal(props: AppDialogPropsType) {
@@ -51,4 +51,3 @@ export default function AddProductModal(props: AppDialogPropsType) {
     </AppDialog>
   )
 }
-

@@ -1,9 +1,9 @@
 export enum Unit {
-  Unit,
-  Kilogram,
-  Gram,
-  Liter,
-  Mililiter,
+  Un,
+  Kg,
+  g,
+  L,
+  mL,
 }
 
 export type Product = {
